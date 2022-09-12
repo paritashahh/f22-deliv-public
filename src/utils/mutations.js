@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, updateDoc, deleteDoc, collection, doc, getDocs } from "firebase/firestore";
 import { db } from './firebase';
 
 // Functions for database mutations
@@ -24,10 +24,21 @@ export async function addEntry(entry) {
    });
 }
 
-export async function updateEntry(entry) {
-   // TODO: Create Mutation to Edit Entry
+export async function editEntry(entry) {
+   await updateDoc(doc(db, "entries", entry.id), {
+      name: entry.name,
+      link: entry.link,
+      description: entry.description,
+      category: entry.category,
+   });
 }
 
 export async function deleteEntry(entry) {
-   // TODO: Create Mutation to Delete Entry
+   await deleteDoc(doc(db, "entries", entry.id), {
+   });
+}
+
+export async function queryEntry(filter) {
+   const filteredEntries = query(collection(db, "entries"), where("category", "==", filter));
+   await getDocs(filteredEntries);
 }

@@ -8,10 +8,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import EntryModal from './EntryModal';
 import { getCategory } from '../utils/categories';
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+
 
 // Table component that displays entries on home screen
 
-export default function EntryTable({ entries }) {
+export default function EntryTable({ entries, filter }) {
    return (
       <TableContainer component={Paper}>
          <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -25,7 +27,7 @@ export default function EntryTable({ entries }) {
                </TableRow>
             </TableHead>
             <TableBody>
-               {entries.map((entry) => (
+               {collection(db, "entries"), where("category", "==", "1").map((entry) => (
                   <TableRow
                      key={entry.id}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -46,3 +48,6 @@ export default function EntryTable({ entries }) {
       </TableContainer>
    );
 }
+
+
+
