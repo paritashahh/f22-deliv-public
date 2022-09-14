@@ -1,4 +1,5 @@
-import { addDoc, updateDoc, deleteDoc, collection, doc, getDocs } from "firebase/firestore";
+import { Filter3Sharp } from "@mui/icons-material";
+import { addDoc, updateDoc, deleteDoc, collection, doc, query, where, getDocs } from "firebase/firestore";
 import { db } from './firebase';
 
 // Functions for database mutations
@@ -38,7 +39,9 @@ export async function deleteEntry(entry) {
    });
 }
 
-export async function queryEntry(filter) {
-   const filteredEntries = query(collection(db, "entries"), where("category", "==", filter));
+// unused function--implemented querying functionality to filter search results but unsufficient permissions 
+export async function queryEntry(filters) {
+   // query for entries that match the filter category
+   const filteredEntries = query(collection(db, "entries"), where("category", 'in', filters));
    await getDocs(filteredEntries);
 }

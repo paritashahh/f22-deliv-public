@@ -20,9 +20,11 @@ import { useEffect, useState } from "react";
 import './App.css';
 import EntryTable from './components/EntryTable';
 import EntryModal from './components/EntryModal';
+import EntryFilter from './components/EntryFilter';
 import { mainListItems } from './components/listItems';
 import { db, SignInScreen } from './utils/firebase';
 import { emptyEntry } from './utils/mutations';
+import { categories } from './utils/categories';
 
 // MUI styling constants
 
@@ -131,6 +133,7 @@ export default function App() {
           <Grid item xs={12}>
             <Stack direction="row" spacing={3}>
               <EntryModal entry={emptyEntry} type="add" user={currentUser} />
+              <EntryFilter />
             </Stack>
           </Grid>
           <Grid item xs={12}>

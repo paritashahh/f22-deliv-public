@@ -9,9 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import { useState } from 'react';
@@ -97,7 +94,7 @@ export default function EntryModal({ entry, type, user }) {
             Add entry
          </Button>
             : null;
-
+            
    const actionButtons =
       type === "edit" ?
          <DialogActions>
@@ -112,7 +109,7 @@ export default function EntryModal({ entry, type, user }) {
             </DialogActions>
             : null;
 
-   return (
+   return (   
       <div>
          {openButton}
          <Dialog open={open} onClose={handleClose}>
