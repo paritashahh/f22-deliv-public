@@ -16,7 +16,7 @@ import { useState } from 'react';
 // Table component that displays entries on home screen
 export default function EntryTable({ entries }) {
    
-   const [data, setData] = useState(enties);
+   const [data, setData] = useState(entries);
    const [order, setOrder] = useState("ASC");
 
    // function for sorting column by name
